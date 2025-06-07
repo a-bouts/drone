@@ -1,0 +1,36 @@
+[workspace]
+resolver = "3"
+
+members = [
+    "core/drone",
+    "components/common/msp_lib",
+    "components/sinks/msp_sink",
+    "components/sources/msp_src",
+]
+
+default-members = [
+    "core/drone"
+]
+
+[workspace.package]
+version = "0.1.0"
+
+[workspace.metadata.workspaces]
+no_individual_tags = true
+
+[workspace.dependencies]
+
+cu29 = "0.8.0"
+
+drone = { path = "core/drone" }
+msp-lib = { path = "components/common/msp_lib" }
+msp-sink = { path = "components/sinks/msp_sink" }
+msp-src = { path = "components/sources/msp_src" }
+
+# External serialization
+bincode = { version = "2.0.1", features = ["derive"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_derive = { version = "1.0.219", features = ["default"] }
+
+# smallvec to avoid heap allocations
+smallvec = { version = "1.15.1", features = ["serde"] }
