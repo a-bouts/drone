@@ -1,0 +1,3 @@
+#!/bin/bash
+# A small shortcut to be able to extract your structured log.
+RUST_BACKTRACE=1 cargo run --features=logreader --bin drone-logreader logs/drone.copper extract-log target/debug/cu29_log_index
