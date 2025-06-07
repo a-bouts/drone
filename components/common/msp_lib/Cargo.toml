@@ -1,0 +1,15 @@
+[package]
+name = "msp-lib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+serde = { workspace = true }
+smallvec = { workspace = true }
+crc-any = "2.5.0"
+packed_struct = "0.10.1"
+
+[features]
+default = ["bincode"]
+bincode = ["dep:bincode"]
