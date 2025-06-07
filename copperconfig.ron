@@ -1,0 +1,30 @@
+// A sample configuration to get you started.
+(
+    tasks: [
+        (
+            id: "mspsrc",
+            type: "cu_msp_src::MSPSrc",
+            config: {
+                "device": "/dev/ttyUSB0",
+                "baudrate": 115_200,
+            },
+        ),
+        (
+            id: "control",
+            type: "tasks::drone_control::DroneControl",
+        ),
+        (
+            id: "mspsink",
+            type: "cu_msp_sink::MSPSink",
+            config: {
+                "device": "/dev/ttyUSB0",
+                "baudrate": 115_200,
+            },
+        ),
+     ],
+    // Makes a connection from the source to the task and from the task to the sink.
+    cnx: [
+        (src: "mspsrc",  dst: "control",   msg: "cu_msp_src::MspResponseBatch"),
+        (src: "control", dst: "mspsink",   msg: "cu_msp_sink::MspRequestBatch"),
+    ],
+)
